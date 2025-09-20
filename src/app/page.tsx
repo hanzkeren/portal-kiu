@@ -5,10 +5,13 @@ import About from '@/components/About'
 import Portfolio from '@/components/Portfolio'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
+import FloatingAction from '@/components/FloatingAction'
+import ScrollProgress from '@/components/ScrollProgress'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black relative">
+      <ScrollProgress />
       <Header />
       <Hero />
       <Services />
@@ -16,6 +19,7 @@ export default function Home() {
       <Portfolio />
       <Contact />
       <Footer />
+      <FloatingAction />
     </main>
   )
 }

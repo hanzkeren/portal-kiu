@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import AnimatedCounter from '@/components/ui/animated-counter'
 
 export default function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -68,9 +69,12 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Grow Your Business with{' '}
+            Scale Your Business with{' '}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
+              AI-Powered
+            </span>{' '}
             <span className="gradient-text bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-              Kiu Media
+              Marketing
             </span>
           </motion.h1>
 
@@ -81,8 +85,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Expert digital marketing solutions specializing in Google Ads, TikTok Ads, Meta advertising, 
-            and cutting-edge website development to accelerate your online success.
+            Transform your digital presence with data-driven campaigns that deliver 
+            <span className="text-green-400 font-semibold"> 300%+ ROI</span>. 
+            From viral TikTok content to high-converting Google Ads - we make your competitors jealous.
           </motion.p>
 
           {/* Services highlights */}
@@ -139,22 +144,27 @@ export default function Hero() {
           >
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
               {[
-                { number: '500+', label: 'Clients Served' },
-                { number: '98%', label: 'Success Rate' },
-                { number: '50M+', label: 'Ad Spend Managed' },
-                { number: '24/7', label: 'Support' },
+                { number: 500, suffix: '+', label: 'Clients Served', color: 'text-blue-400' },
+                { number: 98, suffix: '%', label: 'Success Rate', color: 'text-green-400' },
+                { number: 50, suffix: 'M+', label: 'Ad Spend Managed', color: 'text-purple-400' },
+                { number: 24, suffix: '/7', label: 'Support Available', color: 'text-yellow-400' },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 1.8 + index * 0.1 }}
-                  className="text-center"
+                  className="text-center group hover:scale-110 transition-transform duration-300"
                 >
-                  <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                    {stat.number}
+                  <AnimatedCounter
+                    end={stat.number}
+                    suffix={stat.suffix}
+                    duration={2.5}
+                    className={`text-2xl sm:text-3xl font-bold mb-2 ${stat.color}`}
+                  />
+                  <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                    {stat.label}
                   </div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
